@@ -2,11 +2,11 @@
   "name": "angular-calendar-day-week-month",
   "version": "0.0.0",
   "license": "Apache-2.0",
-  "scripts": {
+"scripts": {
     "build": "ng build --configuration production",
     "start": "node server.js",
-    "heroku-postbuild": "npm run build"
-  },
+    "heroku-postbuild": "npm run build"
+  },
   "private": true,
   "dependencies": {
     "@angular/common": "^20.0.0",
@@ -20,11 +20,12 @@
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0",
     "express": "^4.19.2",
-    "connect-history-api-fallback": "^2.0.0"
+    "connect-history-api-fallback": "^2.0.0",
+    "compression": "^1.7.4"
   },
   "devDependencies": {
     "@angular/build": "^20.0.0",
-    "@angular/cli": "^20.0.0",
+    "@angular/cli": "^20.x",
     "@angular/compiler-cli": "^20.0.0",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.7.0",
@@ -36,6 +37,6 @@
     "typescript": "~5.8.2"
   },
     "engines": {
-    "node": ">=18 <23"
+    "node": "^18.x"
   }
 }

@@ -1,1 +1,1 @@
-web: cd frontend/spa && npm install && npm start
+web:npm --prefix frontend/spa start
