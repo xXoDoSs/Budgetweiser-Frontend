@@ -1,0 +1,125 @@
+.container {
+      display: flex;
+      flex-direction: row;
+      margin-left: 150px;
+    }
+
+/* Filterbereich */
+.filter{
+    display:flex;
+    margin-bottom: 10px;
+}
+
+/* Jede Buchung als Flex-Conatainer */
+.main-bookinglist{
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    padding: 10px 15px;
+    border-bottom: 1px solid black;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+}
+
+.main-bookinglist:last-child{
+    border-bottom: none;
+}
+
+/* Buchungsliste */
+.booking-list{
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+
+/* Kategorie Icon */
+
+.category-icon{
+    margin-left: auto;
+    align-self: flex-end;
+    
+}
+
+.category-icon img{
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+}
+
+/* Buchungstitel */
+
+.bookinglist-title{
+    flex: 3;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+/* Buchungsbetrag */
+
+.bookinglist-amount{
+    flex: 2;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.bookinglist-amount.amount-income{
+    color: rgb(126, 238, 126);
+}
+
+.bookinglist-amount.amount-expenses{
+    color: #FF0000;
+}
+
+/* Buchungsdatum */
+
+.booking-date{
+    flex:2; 
+    margin-left: 5px;
+}
+
+/* Dropdown-button */
+
+.drop-down-button{
+    border-color: 1px solid #ff00ff;
+    background-color: white;
+    padding: 4px 4px;
+    cursor: pointer;
+    margin-left: auto;
+    align-self: flex-end;
+}
+
+/* Dropdown Part */
+
+.dropdownpart{
+    margin-top: 10px;
+    padding: 5px;
+    background-color: rgb(230, 178, 250); 
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Löschen button */
+
+.delete-button{
+    text-align: right;
+}
+
+.bookinglist-delete{
+    border: 1px solid #ff00ff;
+    background-color: rgb(230, 178, 250);
+    cursor: pointer;
+    
+}
+
+.bookinglist-delete:hover{
+    background-color: #FF0000;
+}
+
+/* Notizen */
+
+.bookinglist-notes{
+    flex: 3;
+    margin-left: 5px;
+}

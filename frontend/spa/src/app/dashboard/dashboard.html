@@ -1,0 +1,89 @@
+<div class="container">
+  <h1 class="h1">Dashboard</h1>
+
+  <section class="dashboard-grid">
+
+    <!-- Pie-Chart -->
+    <article class="card chart-card">
+      <header class="card-head">
+        <h2 class="card-title">Ausgaben nach Kategorie</h2>
+      </header>
+      <div class="chart-slot">
+        <ngx-charts-pie-chart
+          [results]="expensesByCategory"
+          [gradient]="gradient"
+          [legend]="showLegend"
+          [labels]="showXAxisLabel"
+          [doughnut]="false">
+        </ngx-charts-pie-chart>
+      </div>
+    </article>
+
+    <!-- Linien-Diagramm -->
+    <article class="card chart-card">
+      <header class="card-head">
+        <h2 class="card-title">Einnahmen vs. Ausgaben</h2>
+      </header>
+      <div class="chart-slot">
+        <ngx-charts-line-chart
+          [results]="incomeVsExpenses"
+          [gradient]="gradient"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="showLegend"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel">
+        </ngx-charts-line-chart>
+      </div>
+    </article>
+
+    <!-- Balken-Diagramm -->
+    <article class="card chart-card">
+      <header class="card-head">
+        <h2 class="card-title">Spartrend</h2>
+      </header>
+      <div class="chart-slot">
+        <ngx-charts-bar-vertical
+          [results]="savingsTrend"
+          [gradient]="gradient"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="showLegend"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel">
+        </ngx-charts-bar-vertical>
+      </div>
+    </article>
+
+    <!-- Jetziger Zustand +/- -->
+    <article class="card kpi-card">
+      <header class="card-head">
+        <h2 class="card-title">Jetziger Zustand +/-</h2>
+      </header>
+
+      <div class="kpi">
+        <div class="kpi-value" id="kpi-balance">{{ balance }} €</div>
+      </div>
+
+      <!-- <footer class="card-foot">Zeitraum: –</footer> -->
+    </article>
+
+    <!-- Wie viel gespart? -->
+    <article class="card kpi-card">
+      <header class="card-head">
+        <h2 class="card-title">Wie viel gespart?</h2>
+      </header>
+
+      <div class="kpi">
+        <div class="kpi-value" id="kpi-saved">{{ saved }} €</div>
+      </div>
+
+      <!-- <footer class="card-foot">Zeitraum: –</footer> -->
+    </article>
+
+  </section>
+</div>

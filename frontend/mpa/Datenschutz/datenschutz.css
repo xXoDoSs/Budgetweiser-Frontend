@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    line-height: 1.5;
+    text-align: justify; 
+    margin-top: 50px;
+    margin-left: 120px;
+    margin-right: 120px;
+}
+
+/* Überschrift der Datenschutzseite */
+#datenschutz-id {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+/* Zurück-Link – gleicher Look wie Vorlage */
+#backToHompage {
+    font-size: 15px;
+    color: black;
+    text-decoration: none;
+    display: flex;
+    align-self: flex-start;   /* links ausrichten */
+    margin-top: -30px;
+    margin-bottom: 30px;
+    float: right;
+}
+
+#backToHompage:hover {
+    color: #FF00FF !important;
+}
+
+#backToHompage:visited {
+    color: black;
+}
+
+/* Fließtext-Abschnitte – IDs aus deinem HTML */
+#grundlegendes-id,
+#verantwortlicher-id,
+#zweck-id,
+#erhobene_daten-id,
+#no_cookies-id,
+#aenderung-id {
+    text-align: left;
+    margin: 12px 0;
+}
+
+/* Liste der Logdaten (wie #gruende/#ziel in der Vorlage) */
+#daten {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px auto 20px auto;
+    text-align: left;
+    display: block;
+    width: 270px; /* wie Vorlage */
+}
+
+#daten li::before {
+    content: "\2731";
+    color: #FF00FF;
+    display: inline-block;
+    width: 20px;
+    margin-left: -600px; 
+}
+
+/* Typografie-Feinschliff */
+b, strong {
+    font-weight: 700;
+}
+
+i, em {
+    font-style: italic;
+}
+
+/* Abstände zwischen Blöcken */
+p {
+    margin: 10px 0;
+}
+
+/* Responsiv: Ränder auf kleineren Screens reduzieren */
+@media (max-width: 900px) {
+    body {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        margin-left: 20px;
+        margin-right: 20px;
+        font-size: 18px;
+    }
+    #daten {
+        width: 100%;
+        max-width: 400px;
+    }
+}

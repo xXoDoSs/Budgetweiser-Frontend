@@ -1,0 +1,47 @@
+body{
+    font-family: Arial;
+    margin: 50px 120px;
+    text-align: left;
+    line-height: 2;
+    text-align: center;
+    font-size: 20px;
+    overflow: hidden;
+}
+
+/* Seitenüberschrift */
+#contact-budgetweiser{
+    font-size: 25px;
+}
+
+/* Zurück zur Hompageseite */
+#backToHompage-contact{
+    font-size: 15px;
+    color: black;
+    text-decoration: none;
+    position: absolute;
+    top: 70px;
+    right: 120px;
+}
+
+#backToHompage-contact:hover{
+    color: #FF00FF !important;
+}
+
+/* Farbe der Links */
+#email-contact a, #cotact-instagram a, #contact-protection {
+    color:black;
+}
+
+#email-contact a:hover, #cotact-instagram a:hover, #contact-protection:hover {
+    color: #FF00FF;
+}
+
+/* Unterüberschrift für den Hinweis zum Datenschutz */
+#notices-contact{
+    font-size: 22px;
+}
+
+
+
+
+

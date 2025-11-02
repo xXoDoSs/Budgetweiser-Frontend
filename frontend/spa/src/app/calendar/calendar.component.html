@@ -1,0 +1,13 @@
+<div class="container">
+      <div class="content">
+        <div class="buttons">
+            <button (click) = previousMonth()> &lt; </button>
+            <h2> {{selectedMonth}}</h2>
+            <button (click) = nextMonth()> &gt; </button>
+        </div>
+
+        <daypilot-month [config]="configMonth" [events]="events" #month></daypilot-month>
+        
+      </div>
+    </div>
+    <app-bookinglist></app-bookinglist>

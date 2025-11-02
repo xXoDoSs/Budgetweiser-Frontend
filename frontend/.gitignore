@@ -1,0 +1,76 @@
+#Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+#Node
+/node_modules
+npm-debug.log
+yarn-error.log
+
+
+#IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+.sublime-workspace
+.vscode/
+*.swp
+.swo
+
+#Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+#Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+
+#System files
+.DS_Store
+Thumbs.db
+
+
+#Logs
+npm-debug.log
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+#Environment files
+src/environments/environment.ts
+.env
+.env.
+
+
+#Angular cache
+.angular/cache/
+.angular/cache/*
+.angular/*
+.angular/cache
+
+#Compiled output
+.map
+
+#Coverage reports
+/coverage
+
+#Misc
+package-lock.json
+yarn.lock
+.pnp.
+.pnp.js

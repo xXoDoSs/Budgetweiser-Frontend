@@ -1,0 +1,113 @@
+<div class="container">
+  <h1 class="h1">Einstellungen</h1>
+  <p class="sub">Verwalte dein Konto und Erscheinungsbild.</p>
+
+  <!-- Drop Down Passwort ändern -->
+  <section class="accordion">
+    <details class="acc-item">
+      <summary class="acc-trigger">
+        Passwort ändern
+        <span class="chev" aria-hidden="true"></span>
+      </summary>
+
+      <div class="acc-inner">
+        <!-- Passwort Formular -->
+        <form [formGroup]="pwForm" (ngSubmit)="savePw()" novalidate>
+          <div class="field">
+            <label class="label" for="pw1">Neues Passwort</label>
+            <input id="pw1"
+                   class="input"
+                   type="password"
+                   formControlName="newPw"
+                   placeholder="Mind. 8 Zeichen" />
+           <div class="err" *ngIf="pwMismatch">
+  Passwörter stimmen nicht überein.
+</div>
+
+
+
+          </div>
+
+          <div class="field">
+            <label class="label" for="pw2">Passwort wiederholen</label>
+            <input id="pw2"
+                   class="input"
+                   type="password"
+                   formControlName="repeat"
+                   placeholder="Gleiches Passwort erneut" />
+            <div class="err" *ngIf="pwMismatch">
+  Passwörter stimmen nicht überein.
+</div>
+          </div>
+
+          <div class="field">
+            <button class="btn btn-primary" type="submit" [disabled]="pwForm.invalid">
+              Speichern
+            </button>
+          </div>
+        </form>
+      </div>
+    </details>
+
+    <!-- Drop Down E-Mail ändern -->
+    <details class="acc-item">
+      <summary class="acc-trigger">
+        E-Mail ändern
+        <span class="chev" aria-hidden="true"></span>
+      </summary>
+
+      <div class="acc-inner">
+        <!-- E-Mail Formular -->
+        <form [formGroup]="mailForm" (ngSubmit)="saveMail()" novalidate>
+          <div class="field">
+            <label class="label" for="mail">Neue E-Mail</label>
+            <input id="mail"
+                   class="input"
+                   type="email"
+                   formControlName="email"
+                   placeholder="name@beispiel.de" />
+            <div class="err"
+                 *ngIf="mailForm.get('email')?.touched && mailForm.get('email')?.invalid">
+              Bitte gib eine gültige E-Mail-Adresse ein (mit @).
+            </div>
+          </div>
+
+          <div class="field">
+            <button class="btn btn-primary" type="submit" [disabled]="mailForm.invalid">
+              Speichern
+            </button>
+          </div>
+        </form>
+      </div>
+    </details>
+  </section>
+
+  <!-- Button -->
+  <section class="card">
+    <label class="switch" aria-label="Benachrichtigungen">
+      <input type="checkbox"
+             [checked]="notifications"
+             (change)="toggleNotify($event.target.checked)" />
+      <span class="track"><span class="thumb"></span></span>
+      <span>Benachrichtigungen</span>
+    </label>
+
+    <label class="switch" aria-label="Dark/Light-Modus">
+      <input type="checkbox"
+             [checked]="darkmode"
+             (change)="toggleDark($event.target.checked)" />
+      <span class="track"><span class="thumb"></span></span>
+      <span>Dark-/Lightmode</span>
+    </label>
+
+    <div class="logout">
+      <button class="btn btn-ghost" type="button" (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </section>
+</div>
+
+<div class="toast-area">
+  <div class="toast" *ngFor="let t of toasts">{{ t }}</div>
+</div>

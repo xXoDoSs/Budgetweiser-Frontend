@@ -1,0 +1,72 @@
+
+<div class="container">
+    <div class="filter">
+        
+        <div class="filter-field">
+            <select id="filtertyp" [(ngModel)]="filtertyp" (change)="applyFilter()">
+                <option id="normal-filter" value="no-filter">Keine Filterung</option>
+                <option id="income-filter" value="einnahmen-filter">Einnahmen</option>
+                <option id="expenses-filter" value="ausgaben-filter">Ausgaben</option>
+                <option id="category-filter" value="category-filter">Kategorie</option>
+                <option id="amount-filter" value="amount-filter">Höchste Summe</option>
+                <option id="date-filter" value="date-filter">Datum</option> 
+            </select>
+        </div>
+
+        <div class="filter-field" *ngIf="filtertyp === 'category-filter'">
+            <label for="category">Kategorie</label>
+            <select id="category" [(ngModel)]="selectedCategory" (change)="applyFilter()">
+            <option value=""></option>
+            <!--Kategorie: Einnahmen-->
+            <option id="salary-id" value="GEHALT">Gehalt</option> 
+            <option id="otherincome-id" value="SONSTIGE_EINNAHMEN">Sonstige Einnahmen</option>
+
+            <!--Kategorie: Ausgaben-->
+            <option id="rent-id" value="MIETE"> Miete</option>
+            <option id="insurance-id" value="VERSICHERUNGEN">Versicherung</option>
+            <option id="extracost-id" value="NEBENKOSTEN">Nebenkosten</option>
+            <option id="groceries-id" value="NAHRUNGSMITTEL">Lebensmittel</option>
+            <option id="freetime-id" value="FREIZEIT">Freizeit</option>
+            <option id="mobility-id" value="MOBILITAET">Mobilität</option>
+            <option id="otherexpenses-id" value="SONSTIGE_AUSGABEN">Ausgaben</option>
+
+            <!--Kategorie: Sparen-->
+            <option id="save-id" value="SPAREN">Sparen</option>
+            </select>
+        </div>
+
+        <div class="search-field">
+            <input type="text" placeholder="Suche.." [(ngModel)]="search" (input)="applyFilter()">
+        </div>
+    </div>
+
+    <div class="booking-list">
+        <div class="main-bookinglist" *ngFor="let booking of filteredBooking">
+
+            <button class="drop-down-button" (click)="toggleDropdown(booking.id)">{{showNotes[booking.id]? '⬆️' : '⬇️'}}</button>
+            
+            <div class="category-icon">
+                <img [src]="booking.categoryIcon" alt="Kategorie">
+            </div>
+        
+            <div class="bookinglist-title">{{booking.title}}</div>
+
+
+            <div class="bookinglist-amount" 
+                [ngClass]="{
+                    'amount-income':booking.type === 'EINNAHME',
+                    'amount-expenses': booking.type === 'AUSGABE'
+                }">
+                {{booking.amount | currency:'EUR'}}</div>
+                
+            <div class="booking-date">{{booking.date | date:'dd.MM.yyyy'}}</div>
+                
+            <div *ngIf="showNotes[booking.id]" class="dropdownpart">
+                <div class="bookinglist-notes">{{booking.notes}}</div>
+                <div class="delete-button">
+                    <button class="bookinglist-delete" (click)="deleteBooking(booking.id)">🗑️</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

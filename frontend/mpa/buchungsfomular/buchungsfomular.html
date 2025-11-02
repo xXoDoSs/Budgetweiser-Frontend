@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--Zeichenkodierung-->
+        <meta charset="UTF-8">
+
+        <!--Passt sich an verschiedene Bildschirmgrößen an-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--Stellt sicher, dass der Browser den neusten Kompatiblitätsmodus verwendet-->
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <!--Seitentitel-->
+        <title>Buchung erstellen</title>
+
+        <!--Anbindung zu CSS-->
+        <link rel="stylesheet" href="./buchungsfomular.css">
+    </head>
+    <body>
+        <div class="create">
+            <p id="new-booking"><b>Buchung erstellen</b></p>
+            <form id="bookingform">
+
+            <!--Einnahme oder Ausgabe wählen-->
+                <div class="budget">
+                    <label for="income">Einnahme</label>
+                    <input type="radio" id="income-check" name="Buchung" value="Einnahme">
+
+                    <label for="expenses">Ausgabe</label>
+                    <input type="radio" id="expenses-check" name="Buchung" value="Ausgabe">   
+                </div>
+
+                <!--Titel eingeben-->
+                <input type="text" id="fomular-title" name="title" placeholder="Titel"  required> </br>
+
+                <!--Summe eingeben-->
+                <input type="number"id="fomular-budget" name="budget-number" step="0.01" placeholder="0.00€" required> </br>
+
+                <!--Datum eingeben-->
+                <input type="date" id="booking-date" name="date" required> </br>
+
+                <!--Kategorie-->
+                <lable for="category"> Kategorie:</lable>
+
+                <!--Sotierungsmenü-->
+                <select class="category" name="category">
+
+                <!--Sortierungsart-->
+                    <!--Kategorie: Einnahmen-->
+                    <option id="salary-id" value="Gehalt">Gehalt</option> 
+                    <option id="otherincome-id" value="sonstige Einnahmen">Sonstige Einnahmen</option>
+
+                    <!--Kategorie: Ausgaben-->
+                    <option id="rent-id" value="Miete"> Miete</option>
+                    <option id="insurance-id" value="Versicherung">Versicherung</option>
+                    <option id="extracost-id" value="Nebenkosten">Nebenkosten</option>
+                    <option id="groceries-id" value="Lebensmittel">Lebensmittel</option>
+                    <option id="freetime-id" value="Freizeit">Freizeit</option>
+                    <option id="mobility-id" value="Mobilität">Mobilität</option>
+                    <option id="otherexpenses-id" value="sonstige Ausgaben">Ausgaben</option>
+
+                    <!--Kategorie: Sparen-->
+                    <option id="save-id" value="Sparen">Sparen</option> 
+                </select> 
+                </br>
+
+                <!--Beschreibung Hinzufügen-->
+                <textarea id="notes-id" name="notes" placeholder="Notiz"></textarea> </br> 
+
+                <!--Hinzufügungsbutton--> 
+                <input type="submit" id="add-button" name="add_Button" value="Hinzufügen">
+            </form>
+            
+            <!--Link zurück zum Kalender-->
+            <a href="/app/calendar" id="backToCalender">Zurück zum Kalender</a>
+         </div>  
+         <!--Anbindung von js-->
+         <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+         <script src="./buchungsfomular.js"></script>
+    </body>
+</html>

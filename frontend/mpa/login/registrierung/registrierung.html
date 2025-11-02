@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <!-- Stellt sicher, dass der Browser den neuesten Kompatibilitätsmodus verwendet -->
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <!-- Responsives Layout: passt sich an verschiedene Bildschirmgrößen an -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login Form</title>
+        <!-- Verknüpfung zur externen CSS-Datei -->
+        <link rel="stylesheet" href="registrierung.css">
+    </head>
+    <body>
+        <div class="hero">
+            <div class="form-box">
+                 <!-- Umschaltleiste zwischen Login und Registrierung -->
+                <div class="button-box">
+                <!-- Beweglicher Indikator (z. B. farbiger Balken) zur Markierung der aktiven Auswahl -->
+                <div id="btn"></div>
+
+                 <!-- Buttons zum Umschalten zwischen Login- und Registrierungsformular -->
+                <button class="toggle-btn" onclick="logined()">Login</button>
+                <button class="toggle-btn" onclick="registered()">Register</button>
+            </div>
+
+             <!-- Login-Formular -->
+            <form id="login" class="input-group">
+                <input type="email" class="input-field" placeholder="Enter email" required>
+                <input type="password" class="input-field" placeholder="Enter Passwort" required>
+                <input type="checkbox" class="check-box"><span> Remember Passwort</span>
+                <button type="submit" class="submit-btn">Log In</button>
+            </form>
+
+             <!-- Registrierungsformular -->
+            <form id="register" class="input-group">
+                <input type="email" class="input-field" placeholder="Enter email" required>
+                <input type="password" id="pw1" class="input-field" placeholder="Enter Passwort" required minlength="8">
+                <input type="password" id="pw2" class="input-field" placeholder="Enter Passwort again" required minlength="8">
+                <button type="submit" class="submit-btn">Register</button>
+            </form>
+            </div>
+        </div>
+
+         <!-- Verknüpfung zur JavaScript-Datei (enthält Logik für Animationen, Umschalten etc.) -->
+        <script src="registrierung.js"></script>
+    </body>
+</html>
