@@ -9,10 +9,11 @@ import {DataService} from "./data.service";
 import { DayPilotModule } from "@daypilot/daypilot-lite-angular";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
+import { BookingListComponent } from "../bookinglist/bookinglist.component";
 @Component({
   selector: 'calendar-component',
   standalone: true,
-  imports: [DayPilotModule, CommonModule, FormsModule],
+  imports: [DayPilotModule, CommonModule, FormsModule, BookingListComponent],
   templateUrl: './calendar.component.html' 
   ,
   styleUrl: './calendar.component.css'
