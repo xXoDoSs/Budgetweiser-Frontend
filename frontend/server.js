@@ -93,7 +93,7 @@ if (spaDistPath) {
 app.get('/', (_req, res) => res.redirect(302, '/app'));
 
 // ---------- Start server ----------
-const PORT = process.env.PORT  8080;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server listening on http://0.0.0.0:${PORT}`);
   console.log('BACKEND_URL:', process.env.BACKEND_URL || '(default)');
