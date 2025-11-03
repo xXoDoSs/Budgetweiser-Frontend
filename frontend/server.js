@@ -9,11 +9,11 @@ const app = express();
 const ROOT = __dirname;
 
 // MPA lives one level up from this server file: ../mpa
-const mpaPath = path.join(ROOT, '..', 'mpa');
+const mpaPath = path.join(ROOT, 'mpa');
 
 // Try to find the built Angular SPA output
 function findSpaDist() {
-  const distRoot = path.join(ROOT, 'dist');
+  const distRoot = path.join(ROOT, 'spa', 'dist');
 
   if (!fs.existsSync(distRoot)) return null;
 
