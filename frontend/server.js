@@ -45,6 +45,13 @@ app.use(compression());
 // Simple health check
 app.get('/health', (_req, res) => res.status(200).send('ok'));
 
+// Endpoint to provide configuration to the frontend
+app.get('/config', (_req, res) => {
+  res.json({
+    backendUrl: process.env.BACKEND_URL || 'https://budgetweiser-a9722999c31d.herokuapp.com/graphql'
+  });
+});
+
 // ---------- Serve MPA (root) ----------
 if (fs.existsSync(mpaPath)) {
   app.use(express.static(mpaPath, {
