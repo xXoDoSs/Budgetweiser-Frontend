@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgClass} from '@angular/common';
 import {CalendarComponent} from './calendar/calendar.component';
 import { SettingsComponent } from './settings/settings';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -8,7 +8,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, SidebarComponent],
+  imports: [CommonModule, RouterOutlet, SidebarComponent, NgClass],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
