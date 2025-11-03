@@ -48,7 +48,7 @@ app.get('/health', (_req, res) => res.status(200).send('ok'));
 app.get('/config', (_req, res) => {
   res.json({
     backendUrl:
-      process.env.BACKEND_URL 
+      process.env.BACKEND_URL ||
       'https://budgetweiser-a9722999c31d.herokuapp.com/graphql',
   });
 });
