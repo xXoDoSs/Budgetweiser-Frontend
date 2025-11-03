@@ -17,10 +17,7 @@ import { RouterModule } from '@angular/router'; // Import RouterModule
     BookingListModule,
     RouterModule.forChild([{ path: '', component: CalendarComponent }]) // Provide the route for the standalone component
   ],
-  declarations: [
-    CalendarComponent
-  ],
-  exports:      [ CalendarComponent ],
+
   providers:    [
     DataService,
     provideHttpClient()
