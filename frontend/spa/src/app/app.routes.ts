@@ -4,7 +4,7 @@ export const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   {
     path: 'dashboard',
-    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+    loadComponent: () => import('./dashboard/dashboard').then(m => m.DashboardComponent)
   },
   {
     path: 'bookinglist',
