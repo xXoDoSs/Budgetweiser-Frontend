@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "node frontend/server.js",
-    "heroku-postbuild": "cd frontend/spa && npm install"
+    "heroku-postbuild": "cd frontend/spa && npm install && npm run build"
   },
   "dependencies": {
     "@angular/forms": "^20.3.9",
