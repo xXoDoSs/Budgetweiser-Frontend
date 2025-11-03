@@ -8,7 +8,7 @@ export const routes: Routes = [
   },
   {
     path: 'bookinglist',
-    loadChildren: () => import('./bookinglist/bookinglist.module').then(m => m.BookingListModule)
+    loadComponent: () => import('./bookinglist/bookinglist.component').then(m => m.BookingListComponent)
   },
   {
     path: 'calendar',

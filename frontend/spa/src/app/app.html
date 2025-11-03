@@ -3,5 +3,7 @@
     [isSidebarCollapsed]="isSidebarCollapsed()"
     (changeIsSidebarCollapsed)="changeIsSidebarCollapsed($event)"
   />
-  <router-outlet [ngClass]="{'main-content': true, 'main-content-collapsed': isSidebarCollapsed()}"></router-outlet>
+  <div [ngClass]="{'main-content': true, 'main-content-collapsed': isSidebarCollapsed()}">
+    <router-outlet></router-outlet>
+  </div>
 </div>

@@ -14,9 +14,13 @@ interface Booking {
     categoryIcon?: string;
 }
 
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 @Component({
     selector: 'app-bookinglist',
-    standalone: false,
+    standalone: true,
+    imports: [CommonModule, ReactiveFormsModule, FormsModule],
     templateUrl: './bookinglist.component.html',
     styleUrls: ["./bookinglist.component.css"]
 })

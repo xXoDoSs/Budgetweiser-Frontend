@@ -114,6 +114,7 @@ export class CalendarComponent implements AfterViewInit {
     cellWidth: 25,
     cellHeight: 25,
     onVisibleRangeChanged: args => {
+      if (!this.month || !this.month.control) { return; }
       this.loadEvents();
     }
   };
@@ -147,10 +148,10 @@ export class CalendarComponent implements AfterViewInit {
 
 
   constructor(private ds: DataService) {
-    this.viewMonth();
   }
 
   ngAfterViewInit(): void {
+    this.viewMonth();
     this.updateMonth();
   }
 
@@ -166,6 +167,7 @@ export class CalendarComponent implements AfterViewInit {
 
 
   updateMonth(): void{
+    if (!this.month || !this.month.control) { return; }
     this.configMonth.startDate = this.date;
     this.selectedMonth = this.date.toString('MMMM yyyy');
     this.loadEvents();
@@ -174,6 +176,7 @@ export class CalendarComponent implements AfterViewInit {
 
 
   loadEvents(): void {
+    if (!this.month || !this.month.control) { return; }
     const from = this.month.control.visibleStart();
     const to = this.month.control.visibleEnd();
     this.ds.getEvents(from, to).subscribe(result => {
