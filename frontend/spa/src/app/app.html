@@ -1,5 +1,7 @@
-<sidebar-component
-  [isSidebarCollapsed]="isSidebarCollapsed()"
-  (changeIsSidebarCollapsed)="changeIsSidebarCollapsed($event)"
-/>
-<router-outlet [ngClass]="{'main-content': true, 'main-content-collapsed': isSidebarCollapsed()}"></router-outlet>
+<div class="app-container">
+  <sidebar-component
+    [isSidebarCollapsed]="isSidebarCollapsed()"
+    (changeIsSidebarCollapsed)="changeIsSidebarCollapsed($event)"
+  />
+  <router-outlet [ngClass]="{'main-content': true, 'main-content-collapsed': isSidebarCollapsed()}"></router-outlet>
+</div>
