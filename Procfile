@@ -1,1 +1,1 @@
-web:npm --prefix frontend/spa start
+web: npm start
