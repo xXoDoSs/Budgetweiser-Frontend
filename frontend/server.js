@@ -80,7 +80,7 @@ if (spaDistPath) {
 
   // SPA deep-link fallback for anything under /app/*
   app.get('/app/*', (_req, res) => {
-    res.sendFile(path.join(spaDistPath, 'index.html'));
+    res.sendFile(path.join(spaDistPath, 'app.html'));
   });
 
   console.log('✅ Angular SPA served from:', spaDistPath);
