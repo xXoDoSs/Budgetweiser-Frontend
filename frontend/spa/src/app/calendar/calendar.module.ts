@@ -13,7 +13,8 @@ import { RouterModule } from '@angular/router'; // Import RouterModule
     CommonModule,
     FormsModule,
     DayPilotModule,
-    RouterModule.forChild([{ path: '', component: CalendarComponent }]) // Provide the route for the standalone component
+    RouterModule.forChild([{ path: '', component: CalendarComponent }]), // Provide the route for the standalone component
+    BookingListComponent
   ],
 
   providers:    [
