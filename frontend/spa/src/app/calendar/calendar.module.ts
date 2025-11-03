@@ -6,7 +6,6 @@ import {DayPilotModule} from "@daypilot/daypilot-lite-angular";
 import {provideHttpClient} from "@angular/common/http";
 import {CommonModule} from "@angular/common";
 import { BookingListComponent } from "../bookinglist/bookinglist.component";
-import { BookingListModule } from "../bookinglist/bookinglist.module";
 import { RouterModule } from '@angular/router'; // Import RouterModule
 
 @NgModule({
@@ -14,7 +13,6 @@ import { RouterModule } from '@angular/router'; // Import RouterModule
     CommonModule,
     FormsModule,
     DayPilotModule,
-    BookingListModule,
     RouterModule.forChild([{ path: '', component: CalendarComponent }]) // Provide the route for the standalone component
   ],
 
