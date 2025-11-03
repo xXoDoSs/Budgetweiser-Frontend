@@ -6,12 +6,14 @@ const compression = require('compression');
 const app = express();
 
 // ---------- Paths ----------
-const ROOT = __dirname; // -> /app/frontend on Heroku
-const mpaPath = path.join(ROOT, 'mpa'); // optional legacy MPA
+const ROOT = __dirname;
 
-// Find the built Angular SPA output under /frontend/spa/dist
+// MPA lives one level up from this server file: ../mpa
+const mpaPath = path.join(ROOT, 'mpa');
+
+// Try to find the built Angular SPA output
 function findSpaDist() {
-  const distRoot = path.join(ROOT, 'spa', 'dist'); // ✅ /app/frontend/spa/dist
+  const distRoot = path.join('frontend', 'spa', 'dist');
 
   if (!fs.existsSync(distRoot)) return null;
 
@@ -36,7 +38,6 @@ function findSpaDist() {
 }
 
 const spaDistPath = findSpaDist();
-console.log('Resolved SPA dist path:', spaDistPath || 'NOT FOUND');
 
 // ---------- Middleware ----------
 app.use(compression());
@@ -47,56 +48,49 @@ app.get('/health', (_req, res) => res.status(200).send('ok'));
 // Endpoint to provide configuration to the frontend
 app.get('/config', (_req, res) => {
   res.json({
-    backendUrl:
-      process.env.BACKEND_URL ||
-      'https://budgetweiser-a9722999c31d.herokuapp.com/graphql',
+    backendUrl: process.env.BACKEND_URL || 'https://budgetweiser-a9722999c31d.herokuapp.com/graphql'
   });
 });
 
-// ---------- (Optional) Serve legacy MPA static files ----------
+// ---------- Serve MPA (root) ----------
 if (fs.existsSync(mpaPath)) {
-  app.use(
-    '/mpa',
-    express.static(mpaPath, {
-      etag: true,
-      lastModified: true,
-      maxAge: '1d',
-      index: false,
-    })
-  );
+  app.use(express.static(mpaPath, {
+    etag: true,
+    lastModified: true,
+    maxAge: '1d'
+  }));
 } else {
   console.warn('⚠  MPA path not found:', mpaPath);
 }
 
-
-if (spaDistPath) {
-  app.use(
-    '/app',
-    express.static(spaDistPath, {
-      etag: true,
-      lastModified: true,
-      maxAge: '1y', // Angular file hashing handles cache-busting
-      index: false,
-    })
-  );
-
-  // SPA deep-link fallback for anything under /app/
-  app.get('/app/*', (_req, res) => {
-    // Use absolute root to avoid "path must be absolute" errors
-    res.sendFile('index.html', { root: spaDistPath });
-  });
-} else {
-  console.warn('⚠  No built Angular SPA found under /frontend/spa/dist. Did the build run?');
-}
-
-// ---------- Redirect root to the SPA ----------
+// Root route → redirect to your homepage document
 app.get('/', (_req, res) => {
-  res.sendFile('homepage/homepage.html', { root: mpaPath });
+  res.sendFile('mpa/homepage/homepage.html', { root: __dirname });
 });
+
+// ---------- Serve SPA at /app ----------
+if (spaDistPath) {
+  // Serve static assets under /app
+  app.use('/app', express.static(spaDistPath, {
+    etag: true,
+    lastModified: true,
+    maxAge: '1y',               // cache busting handled by Angular hashes
+    index: false
+  }));
+
+  // SPA deep-link fallback for anything under /app/*
+  app.get('/app/*', (_req, res) => {
+    res.sendFile(path.join(spaDistPath, 'app.html'));
+  });
+
+  console.log('✅ Angular SPA served from:', spaDistPath);
+} else {
+  console.warn('⚠  No built Angular SPA found under /dist. Did the build run?');
+}
 
 // ---------- Start server ----------
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server listening on http://0.0.0.0:${PORT}`);
-  console.log('BACKEND_URL:', process.env.BACKEND_URL || '(default)');
+  console.log('BACKEND_URL from environment:', process.env.BACKEND_URL);
 });
