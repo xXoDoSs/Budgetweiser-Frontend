@@ -4,7 +4,7 @@
     <span class="material-symbols-outlined">menu</span>
     </button>
 
-    <ng-container *ngIf="!isSidebarCollapsed">
+    <ng-container *ngIf="!isSidebarCollapsed()">
     <div class="logo-text">App</div>
     <button class="btn-close" (click)="closeSidenav()">
         <span class="material-symbols-outlined close-icon">close</span>
