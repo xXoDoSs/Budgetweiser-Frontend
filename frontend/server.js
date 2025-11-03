@@ -90,7 +90,9 @@ if (spaDistPath) {
 }
 
 // ---------- Redirect root to the SPA ----------
-app.get('/', (_req, res) => res.redirect(302, '/app'));
+app.get('/', (_req, res) => {
+  res.sendFile('homepage/homepage.html', { root: mpaPath });
+});
 
 // ---------- Start server ----------
 const PORT = process.env.PORT || 8080;
