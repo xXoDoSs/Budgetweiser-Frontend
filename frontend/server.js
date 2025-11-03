@@ -93,4 +93,5 @@ if (spaDistPath) {
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server listening on http://0.0.0.0:${PORT}`);
+  console.log('BACKEND_URL from environment:', process.env.BACKEND_URL);
 });
