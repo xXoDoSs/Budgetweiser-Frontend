@@ -65,7 +65,7 @@ if (fs.existsSync(mpaPath)) {
 
 // Root route → redirect to your homepage document
 app.get('/', (_req, res) => {
-  res.sendFile(path.join(mpaPath, 'homepage', 'homepage.html'));
+  res.sendFile('homepage/homepage.html', { root: mpaPath });
 });
 
 // ---------- Serve SPA at /app ----------
