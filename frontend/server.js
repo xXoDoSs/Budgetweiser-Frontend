@@ -13,7 +13,7 @@ const mpaPath = path.join(ROOT, 'mpa');
 
 // Try to find the built Angular SPA output
 function findSpaDist() {
-  const distRoot = path.join(ROOT, 'spa', 'dist');
+  const distRoot = path.join('frontend', 'spa', 'dist');
 
   if (!fs.existsSync(distRoot)) return null;
 
