@@ -1,15 +1,25 @@
-import {Injectable} from "@angular/core";
-import {Observable, of} from "rxjs";
-import {map} from "rxjs/operators";
-import {DayPilot} from "@daypilot/daypilot-lite-angular";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import { environment } from '../../environments/environment';
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
+import { DayPilot } from "@daypilot/daypilot-lite-angular";
+import { Apollo, gql } from 'apollo-angular';
+
+const GET_EVENTS = gql`
+  query GetBookings {
+    bookings {
+      id
+      title
+      date
+      amount
+      type
+    }
+  }
+`;
 
 @Injectable({
-  providedIn: 'root' })
+  providedIn: 'root'
+})
 export class DataService {
-
-  private readonly graphqlUrl = environment.backendUrl + '/graphql';
 
   static colors = {
     green: "#6aa84f",
@@ -19,31 +29,13 @@ export class DataService {
     blue: "#2e78d6",
   };
 
-  constructor(private http : HttpClient){
-  }
-
-  private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem('token'); // Or however you store your token
-    return new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    });
+  constructor(private apollo: Apollo) {
   }
 
   getEvents(from: DayPilot.Date, to: DayPilot.Date): Observable<any[]> {
-    const query = {
-      query: `{
-        bookings {
-          id
-          title
-          date
-          amount
-          type
-        }
-      }`
-    };
-
-    return this.http.post<any>(this.graphqlUrl, query, { headers: this.getHeaders() }).pipe(
+    return this.apollo.watchQuery<any>({
+      query: GET_EVENTS
+    }).valueChanges.pipe(
       map(response => {
         if (response.data && response.data.bookings) {
           return response.data.bookings.map((booking: any) => {
@@ -63,14 +55,14 @@ export class DataService {
   }
 
   getColors(): any[] {
-      const colors = [
-        {name: "Green", id: DataService.colors.green},
-        {name: "Yellow", id: DataService.colors.yellow},
-        {name: "Red", id: DataService.colors.red},
-        {name: "Gray", id: DataService.colors.gray},
-        {name: "Blue", id: DataService.colors.blue},
-      ];
-      return colors;
+    const colors = [
+      { name: "Green", id: DataService.colors.green },
+      { name: "Yellow", id: DataService.colors.yellow },
+      { name: "Red", id: DataService.colors.red },
+      { name: "Gray", id: DataService.colors.gray },
+      { name: "Blue", id: DataService.colors.blue },
+    ];
+    return colors;
   }
 
 }

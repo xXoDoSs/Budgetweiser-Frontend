@@ -50,7 +50,7 @@ registerForm.addEventListener('submit', function(e) {
         }
     `;
 
-    fetch('/graphql', {
+    fetch('https://budgetweiser-a9722999c31d.herokuapp.com/graphql', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ loginForm.addEventListener('submit', function(e) {
         }
     `;
 
-    fetch('/graphql', {
+    fetch('https://budgetweiser-a9722999c31d.herokuapp.com/graphql', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

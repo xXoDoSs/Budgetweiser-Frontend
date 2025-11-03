@@ -1,44 +1,61 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
+import { Apollo, gql } from 'apollo-angular';
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+const UPDATE_EMAIL = gql`
+  mutation UpdateEmail($newEmail: String!) {
+    updateEmail(input: { newEmail: $newEmail }) {
+      id
+      email
+    }
+  }
+`;
+
+const UPDATE_PASSWORD = gql`
+  mutation UpdatePassword($newPassword: String!) {
+    updatePassword(input: { newPassword: $newPassword }) {
+      id
+    }
+  }
+`;
+
+const UPDATE_SETTINGS = gql`
+  mutation UpdateSettings($notifications: Boolean!, $darkMode: Boolean!) {
+    updateSettings(input: { notifications: $notifications, darkMode: $darkMode }) {
+      id
+      notifications
+      darkMode
+    }
+  }
+`;
 
 @Injectable({
   providedIn: 'root'
 })
 export class SettingsService {
 
-  private readonly graphqlUrl = environment.backendUrl + '/graphql';
-
-  constructor(private http: HttpClient) { }
-
-  private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem('token'); // Or however you store your token
-    return new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    });
-  }
+  constructor(private apollo: Apollo) { }
 
   updateEmail(newEmail: string): Observable<any> {
-    const mutation = {
-      query: `mutation { updateEmail(input: { newEmail: "${newEmail}" }) { id email } }`
-    };
-    return this.http.post(this.graphqlUrl, mutation, { headers: this.getHeaders() });
+    return this.apollo.mutate({
+      mutation: UPDATE_EMAIL,
+      variables: { newEmail }
+    }).pipe(map(result => result.data));
   }
 
   updatePassword(newPassword: string): Observable<any> {
-    const mutation = {
-      query: `mutation { updatePassword(input: { newPassword: "${newPassword}" }) { id } }`
-    };
-    return this.http.post(this.graphqlUrl, mutation, { headers: this.getHeaders() });
+    return this.apollo.mutate({
+      mutation: UPDATE_PASSWORD,
+      variables: { newPassword }
+    }).pipe(map(result => result.data));
   }
 
   updateSettings(notifications: boolean, darkMode: boolean): Observable<any> {
-    const mutation = {
-      query: `mutation { updateSettings(input: { notifications: ${notifications}, darkMode: ${darkMode} }) { id notifications darkMode } }`
-    };
-    return this.http.post(this.graphqlUrl, mutation, { headers: this.getHeaders() });
+    return this.apollo.mutate({
+      mutation: UPDATE_SETTINGS,
+      variables: { notifications, darkMode }
+    }).pipe(map(result => result.data));
   }
 
   logout(): void {
