@@ -64,3 +64,87 @@ body{
     color: black;
 }
 
+body { overflow-wrap: anywhere; }
+
+#impressum-description { font-size: 15px; }
+
+@media (max-width: 1024px) {
+  body {
+    margin: 36px 40px;        
+    line-height: 1.7;
+    font-size: 18px;
+    overflow: auto;            
+  }
+
+  #backToHompage {
+    right: 40px;
+    top: 50px;
+  }
+
+  #projectname, #team, #adress, #contact, #responsible, #liability {
+    font-size: 19px;
+  }
+
+  #teammembers { font-size: 16px; }
+  #impressum-description, #adress-details, #email, #responsible-person, #disclaimer {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    margin: 28px 16px;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: left;          
+    overflow: auto;            
+  }
+
+  
+  #impressum {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  #backToHompage{
+    position: fixed;           
+    top: 10px;
+    right: 12px;
+    z-index: 10;
+    font-size: 14px;
+    padding: 6px 8px;
+    background: #fff;
+    border: 1px solid #FF00FF;
+    border-radius: 4px;
+  }
+
+  #projectname, #team, #adress, #contact, #responsible, #liability {
+    font-size: 18px;
+    margin-top: 14px;
+  }
+
+  #teammembers {
+    font-size: 15px;
+    margin: 6px 0 10px;
+    padding-left: 0;
+    list-style: none;         
+  }
+
+  #impressum-description, #adress-details, #email, #responsible-person, #disclaimer {
+    font-size: 15px;
+    margin: 8px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  #backToHompage{
+    font-size: 13px;
+    padding: 6px 8px;
+  }
+}
+

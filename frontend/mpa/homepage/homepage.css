@@ -189,3 +189,54 @@ footer{
     font-size: 15px;
     text-align: center;
 }
+#logo-id,
+#finanzplaner-id { max-width: 100%; height: auto; }
+
+@media (max-width: 1024px){
+  body { margin-top: 24px; }
+  .link-container{
+    width: auto; flex-wrap: wrap; justify-content: center;
+    gap: 12px 24px; margin: 0 16px;
+  }
+  .link-container a{ margin-right: 0; font-size: 18px; }
+  #welcome{ font-size: 22px; }
+  #budgetweiser{ font-size: 34px; }
+  #product-description{ font-size: 18px; padding: 0 16px; }
+  .table-fa{ font-size: 18px; padding: 0 16px; }
+  .table-footer{ width: 80%; font-size: 14px; }
+}
+
+@media (max-width: 768px){
+  #login-button{
+    position: fixed; top: 10px; right: 12px; z-index: 10;
+    font-size: 16px; padding: 6px 10px;
+  }
+  .link-container{
+    flex-direction: column; align-items: center; gap: 8px; margin-top: 42px;
+  }
+  .link-container a{ font-size: 16px; }
+  #logo-id{ width: 160px; margin-bottom: -28px; }
+  #welcome{ font-size: 20px; }
+  #budgetweiser{ font-size: 30px; }
+  #product-description{
+    font-size: 16px; line-height: 1.6; padding: 0 14px; text-align: left;
+  }
+  #registration-homepage{ font-size: 20px; }
+  #registration-button{ font-size: 18px; padding: 8px 14px; margin-top: 6px; }
+  #finanzplaner-id{ width: 94vw; margin: 16px auto; }
+  .table-fa{ font-size: 16px; line-height: 30px; }
+  .table-footer{ width: 92%; }
+  .table-footer tr{ display: block; }
+  .table-footer th,
+  .table-footer td{ display: block; padding: 8px 0; text-align: left; }
+  .table-footer th{ margin-top: 10px; }
+  #copyright{ font-size: 14px; }
+}
+
+@media (max-width: 480px){
+  .link-container a{ font-size: 15px; }
+  #budgetweiser{ font-size: 26px; }
+  #product-description{ font-size: 15px; }
+  .table-fa{ font-size: 15px; }
+  #registration-button{ font-size: 16px; }
+}
